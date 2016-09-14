@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import validateInput from '../../../server/shared/validations/signup';
 import TextFields from '../common/TextFields';
 
+
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +45,9 @@ class SignupForm extends React.Component {
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true});
       this.props.userSignupRequest(this.state).then(
-        () => {},
+        () => {
+          this.context.router.push('/');
+        },
         ({ data }) => this.setState({ errors: data, isLoading: false })
       );
     }
@@ -91,14 +94,6 @@ class SignupForm extends React.Component {
           field="passwordConfirmation"
         />
 
-        <TextFields
-          error={errors.username}
-          label="Username"
-          onChange={this.onChange}
-          value={this.state.username}
-          field="username"
-        />
-
         <div className={classnames('form-group', { 'has-error': errors.timezone })}>
           <label className="control-label">Timezone</label>
           <select
@@ -125,6 +120,10 @@ class SignupForm extends React.Component {
 
 SignupForm.propTypes = {
   userSignupRequest: React.PropTypes.func.isRequired
+}
+
+SignupForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
 
 export default SignupForm;
