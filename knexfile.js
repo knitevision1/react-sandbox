@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       database: 'rapa',
       user:     'knitevision',
-      password: 'b2s2Jfa6'
+      password: '111111'
     },
     pool: {
       min: 2,
