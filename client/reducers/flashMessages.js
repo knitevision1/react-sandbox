@@ -1,4 +1,4 @@
-import { ADD_FLASH_MESSAGE } from '../actions/types';
+import { ADD_FLASH_MESSAGE, ONSIGNUP_USER_EXISTS } from '../actions/types';
 import shortid from 'shortid';
 
 export default (state = [], action = {}) => {
@@ -12,6 +12,17 @@ export default (state = [], action = {}) => {
 					text: action.message.text
 				}
 			]
+
+		case ONSIGNUP_USER_EXISTS:
+			return [
+				...state,
+				{
+					id: shortid.generate(),
+					type: action.message.type,
+					text: action.message.text
+				}
+			]
+			
 		default: return state;
 	}
 }
