@@ -1,11 +1,10 @@
 import React from 'react';
+import CustomArtwork from './Modules/CustomArtwork';
 
 class HomePage extends React.Component {
 	render() {
 		return (
-			<div className="jumbotron">
-				<h1>Welc(); 3 :) =)</h1>
-			</div>
+			<CustomArtwork />
 		)
 	}
 }
